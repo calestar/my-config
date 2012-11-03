@@ -182,10 +182,10 @@ for s = 1, screen.count() do
             mylauncher,
             mytaglist[s],
             mypromptbox[s],
-            volume_widget,
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
+        volume_widget,
         mytextclock,
         s == 1 and mysystray or nil,
         mytasklist[s],
