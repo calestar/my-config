@@ -20,6 +20,7 @@ modkey = "Mod4"
 -- Personal stuff
 require("menu")
 require("volume")
+require("lock")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -203,6 +204,7 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    lock_keys,
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
