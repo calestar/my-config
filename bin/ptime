@@ -1,0 +1,98 @@
+#!/usr/bin/env perl
+
+# Copyright 2011 Jean-Sebastien Gelinas <calestar@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+package ptime;
+
+use warnings;
+use strict;
+
+use Getopt::Std;
+use Time::HiRes qw(time);
+
+sub usage {
+    print STDERR << "EOF";
+This program will simply execute the given program and output the time it took (like the time command) but will give more options
+usage : $0 [options] [outputs] program [program arguments]
+Options:
+	-h        show this help
+	-s        silent mode, will not output anything if an error occurs when writing to a file
+
+Output Modes:
+	-o file   output time to file
+	-c        output time to console STDOUT
+	-e        output time to console STDERR
+EOF
+	exit;
+}
+
+# Process options
+my %opt;
+my $opt_string = 'ho:ecs';
+getopts( $opt_string, \%opt ) or usage();
+usage() if $opt{h};
+
+# Get the exec string, and validate
+my $exec_string = join ' ', @ARGV;
+usage() if length $exec_string == 0;
+
+# Time before
+my $breal = time;
+my ($buser,$bsystem,$bcuser,$bcsystem) = times;
+
+# Exec
+my $retval = system $exec_string;
+$retval = $retval >> 8; # Fix the return value
+
+# Time after
+my $areal = time;
+my ($auser,$asystem,$acuser,$acsystem) = times;
+
+# Get the data
+our $real =    $areal    - $breal;    # This is wall-clock
+our $user =    $auser    - $buser;    # We won't use this, it is for the current process, not the one we want to time
+our $system =  $asystem  - $bsystem;  # We won't use this, it is for the current process, not the one we want to time
+our $cuser =   $acuser   - $bcuser;   # Child-user, therefore the one we want to time
+our $csystem = $acsystem - $bcsystem; # Child-system, therefore the one we want to time
+
+# Simple sub to wrap around the result string creation
+sub result {
+<< "EOR";
+real    ${real}s
+user    ${cuser}s
+sys     ${csystem}s
+EOR
+}
+
+# Process the output modes
+if ($opt{c}) {
+	print STDOUT result()
+}
+
+if ($opt{e}) {
+	print STDERR result()
+}
+
+if ($opt{o}) {
+	if (open FILE, ">$opt{o}") {
+		print FILE result();
+		close FILE;
+	} else {
+		print STDERR "Could not open output file $opt{o}: $!\n" unless $opt{s};
+	}
+}
+
+# Return the value from the executed program
+exit $retval;
