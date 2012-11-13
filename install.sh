@@ -19,3 +19,9 @@ if [ ! -L ~/.bashrc_extra ]; then
   ln --symbolic `pwd`/bash/bash_extra.sh ~/.bashrc_extra
   echo Do not forget to source ~/.bashrc_extra in your ~/.bashrc to finish integration
 fi
+
+if [ ! -L ~/.vimrc_extra ]; then
+  echo Installing vim integration
+  ln --symbolic `pwd`/vim/vimrc_extra ~/.vimrc_extra
+  echo Do not forget to add \"source ~/.vimrc_extra\" to your ~/.vimrc file to finish integration
+fi
