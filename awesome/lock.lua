@@ -2,5 +2,5 @@
 -- Needs: apt-get install xlockmore
 
 lock_keys = awful.util.table.join(
-  awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("xlock") end)
+  awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("dm-tool lock") end)
 )
