@@ -14,7 +14,7 @@ export GIT_PS1_SHOWSTASHSTATE="1"       # Display whether there are stashed ($) 
 export GIT_PS1_SHOWUNTRACKEDFILES="1"   # Display if there are untracked (%) files
 export GIT_PS1_SHOWUPSTREAM="auto"      # Display if we're ahead (>) or behind (<) or diverged (<>) relative
                                         # to upstream
-. /etc/bash_completion.d/git
+. ~/.git_bash_completion.bash
 if [ "$color_prompt" = yes ]; then
     PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 else
