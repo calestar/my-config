@@ -1,0 +1,12 @@
+
+battery_widget = awful.widget.progressbar()
+
+battery_widget:set_width(10)
+battery_widget:set_vertical(true)
+battery_widget:set_background_color("#494B4F")
+battery_widget:set_border_color(nil)
+
+battery_widget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
+
+vicious.register(battery_widget, vicious.widgets.bat, "$2", 61, "BAT0")
+

@@ -6,6 +6,7 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
+vicious = require("vicious")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -19,8 +20,11 @@ modkey = "Mod4"
 
 -- Personal stuff
 require("menu")
-require("volume")
+require("widgets.volume")
 require("lock")
+require("widgets.cpu")
+require("widgets.battery")
+--require("memory")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -112,6 +116,7 @@ mysystray = widget({ type = "systray" })
 
 -- Create a wibox for each screen and add it
 mywibox = {}
+mybottombox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -185,12 +190,24 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
-        volume_widget,
-        mytextclock,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
+
+    -- Bottom box
+    if s == 1 then
+        mybottombox[s] = awful.wibox({ position = "bottom", screen = s })
+        -- Add widgets to the wibox - order matters
+        mybottombox[s].widgets = {
+            volume_widget,
+            battery_widget,
+            cpu_widget,
+            --memory_widget,
+            mytextclock,
+            layout = awful.widget.layout.horizontal.rightleft
+        }
+    end
 end
 -- }}}
 
@@ -383,3 +400,4 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+

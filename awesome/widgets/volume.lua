@@ -15,8 +15,8 @@ volume_widget.ticks_count = 8
 volume_widget.gap = 0
 volume_widget.vertical = true
 
-volume_widget:bar_properties_set("vol", 
-{ 
+volume_widget:bar_properties_set("vol",
+{
   ["bg"] = "#000000",
   ["fg"] = "green",
   ["fg_center"] = "yellow",
@@ -35,6 +35,9 @@ function volume (mode, widget)
     local status = fd:read("*all")
     fd:close()
     local volume = string.match(status, "(%d?%d?%d)%%")
+    if (volume == nil) then
+        return;
+    end
     volume = string.format("% 3d", volume)
     status = string.match(status, "%[(o[^%]]*)%]")
     if string.find(status, "on", 1, true) then
