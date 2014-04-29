@@ -1,6 +1,7 @@
 
 -- Initialize widget
 cpu_widget = awful.widget.graph()
+awful.widget.layout.margins[cpu_widget.widget] = { left = 2, right = 2 }
 
 -- Graph properties
 cpu_widget:set_width(50)

@@ -8,6 +8,9 @@ esac
 #### Add ~/bin and ~/bin/extra to the path
 PATH=~/bin:~/bin/extra:$PATH
 
+#### Lynx config
+export LYNX_CFG=~/.lynx/lynx.cfg
+
 #### Git integration
 export GIT_PS1_SHOWDIRTYSTATE="1"       # Display unstaged (*) and staged(+) changes
 export GIT_PS1_SHOWSTASHSTATE="1"       # Display whether there are stashed ($) changes

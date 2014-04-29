@@ -24,6 +24,7 @@ require("widgets.volume")
 require("lock")
 require("widgets.cpu")
 require("widgets.battery")
+require("widgets.memory_bar")
 --require("memory")
 
 -- {{{ Error handling
@@ -53,7 +54,9 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+home_directory = os.getenv("HOME")
+
+beautiful.init(home_directory .. "/.config/awesome/theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -90,26 +93,24 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
---   { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu },
                                     { "Debian", debian.menu.Debian_menu.Debian },
                                     { "Menu", my.menu.My_menu },
                                     { "open terminal", terminal }
                                   }
                         })
 
-mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
-                                     menu = mymainmenu })
 -- }}}
 
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
+--mytextclock = awful.widget.textclock()
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -184,7 +185,6 @@ for s = 1, screen.count() do
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
-            mylauncher,
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
@@ -200,10 +200,13 @@ for s = 1, screen.count() do
         mybottombox[s] = awful.wibox({ position = "bottom", screen = s })
         -- Add widgets to the wibox - order matters
         mybottombox[s].widgets = {
-            volume_widget,
-            battery_widget,
-            cpu_widget,
-            --memory_widget,
+            {
+                memory_widget,
+                volume_widget.widget,
+                battery_widget.widget,
+                cpu_widget.widget,
+                layout = awful.widget.layout.horizontal.leftright
+            },
             mytextclock,
             layout = awful.widget.layout.horizontal.rightleft
         }
@@ -298,6 +301,16 @@ clientkeys = awful.util.table.join(
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c.maximized_vertical   = not c.maximized_vertical
+        end),
+    awful.key({ modkey,           }, "Down",
+        function (c)
+            c.maximized_horizontal = false
+            c.maximized_vertical   = false
+        end),
+    awful.key({ modkey,           }, "Up",
+        function (c)
+            c.maximized_horizontal = true
+            c.maximized_vertical   = true
         end)
 )
 
