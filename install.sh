@@ -25,3 +25,9 @@ if [ ! -L ~/.vimrc_extra ]; then
   ln --symbolic `pwd`/vim/vimrc_extra ~/.vimrc_extra
   echo Do not forget to add \"source ~/.vimrc_extra\" to your ~/.vimrc file to finish integration
 fi
+
+# Make things beautiful
+if [ ! -L ~/.Xdefaults ]; then
+  echo Installing .XDefaults
+  ln --symbolic `pwd`/X/.Xdefaults ~/.Xdefaults
+fi
