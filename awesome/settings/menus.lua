@@ -10,7 +10,13 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+programsmenu = {
+   {"Chrome","/usr/bin/google-chrome", "/opt/google/chrome/product_logo_32.png"},
+   {"Chromium","/usr/bin/chromium-browser"}
+}
+
+mymainmenu = awful.menu({ items = { { "programs", programsmenu },
+                                    { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "open terminal", terminal }
                                   }
                         })
