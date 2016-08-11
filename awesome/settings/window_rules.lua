@@ -19,25 +19,22 @@ awful.rules.rules = {
                 properties= { tag = tags[1][1] },
         },
         {
-                rule = { class = "Pidgin" },
-                properties = { tag = tags[1][5],
-                               callback   = awful.client.setslave },
-        },
-        { 
-                rule = { instance = "plugin-container"},
-                properties = { floating = true } },
-        {
-                rule = { class = "Eclipse" },
-                properties = { tag = tags[1][4] }
-        },
-        {
-                rule = { instance = "plugin-container" },
-                properties = { floating = true }
-        },
-        {
                 rule = { class = "gimp" },
                 properties = { floating = true }
         },
+        {
+                rule = { class = "Remmina" },
+                properties = { floating = true,
+                               tag = tags[1][7],
+                               switchtotag = tags[1][7]}
+        },
+        {
+                rule = { class = "Vpnui" },
+                properties = { floating = true,
+                               tag = tags[1][7],
+                               switchtotag = tags[1][7]}
+        },
+
 }
 -- }}}
 

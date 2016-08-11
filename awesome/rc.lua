@@ -16,7 +16,6 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 
 -- EXTENSIONS (functions etc)
---local mykb  = require("myrc.kb_layout") -- change keyboard layout
 local myro  = require("myrc.run_once")  -- run app as long it's not running already
 
 -- VARIABLES
@@ -29,17 +28,8 @@ configpath="/home/"..os.getenv("USER").."/.config/awesome/"
 -- default theme
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
--- CUSTOM THEMES - pick name from themes/
---local theme = "zenburn-custom"
---beautiful.init(configpath .. "/themes/" .. theme ..  "/theme.lua")
-
-
--- KEYBINDED COMMANDS (see settings/custom_binds.lua)
-hibernate_cmd = "/usr/sbin/hibernate-ram"
-mute_cmd = "/home/tomas/bin/mute"
-brightness_cmd = "xbacklight"
-raise_volume_cmd = "amixer -q set Master 4+"
-lower_volume_cmd = "amixer -q set Master 4-"
+-- Backgrounds
+require("settings.wallpaper")
 
 -- Default modkey (DEFAULT Mod4 = WinKey)
 modkey = "Mod4"
@@ -68,23 +58,5 @@ require("stock.signals")
 -- STARTUP apps
 require("settings.startup")
 
--------------------------------- PLUGIN SECTION ------------------------
-
---Logger
---dependencies: http://awesome.naquadah.org/wiki/Naughty_log_watcher
---local lognotify = require("lognotify")
-
-
---Orglendar plugin
--- uncomment and adjust paths to use
-
---require('plugins.Orglendar.orglendar')
---orglendar.files = { "/home/username/Documents/Notes/work.org",    -- Specify here all files you want to be parsed, separated by comma.
---                     "/home/username/Documents/stuff/home.org" }
---orglendar.register(mytextclock)
-
-
--- wallpaper snippet
---local mywp = require("settings.wallpaper")
 local myerr = require("myrc.error")     -- error reporting
 
