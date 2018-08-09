@@ -34,6 +34,7 @@ needs_awesome_config=$has_UI
 needs_X_config=$has_UI
 needs_vim_config=$has_vim
 needs_bash_extra=$has_bash
+needs_git_prompt=$has_git
 needs_git_bash_completion=$has_git
 needs_git_config=$has_git
 needs_binaries="true"
@@ -75,6 +76,13 @@ if [ $needs_bash_extra = "true" ]; then
   fi
 fi
 
+if [ $needs_git_prompt = "true" ]; then
+  if [ -f ~/.git-prompt.sh ]; then
+    # Already installed, skip !
+    needs_git_prompt="false"
+  fi
+fi
+
 if [ $needs_git_bash_completion = "true" ]; then
   if [ -f ~/.git_bash_completion.bash ]; then
     # Already installed, skip !
@@ -88,6 +96,7 @@ echo "Installing scripts and binaries? $needs_binaries"
 echo "Installing bash extra config? $needs_bash_extra"
 echo "Installing vim config? $needs_vim_config"
 echo "Installing X config? $needs_X_config"
+echo "Installing git prompt script? $needs_git_prompt"
 echo "Installing git bash completion? $needs_git_bash_completion"
 echo "Applying git config? $needs_git_config"
 
@@ -123,6 +132,11 @@ fi
 if [ $needs_X_config = "true" ]; then
   echo Installing .XDefaults ...
   ln --symbolic `pwd`/X/.Xdefaults ~/.Xdefaults
+fi
+
+if [ $needs_git_prompt = "true" ]; then
+  echo Installing git prompt script ...
+  ln --symbolic `pwd`/bash/git-prompt.sh  ~/.git-prompt.sh
 fi
 
 if [ $needs_git_bash_completion = "true" ]; then
