@@ -59,4 +59,3 @@ require("stock.signals")
 require("settings.startup")
 
 local myerr = require("myrc.error")     -- error reporting
-

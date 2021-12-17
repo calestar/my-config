@@ -42,7 +42,7 @@ globalkeys = awful.util.table.join(globalbinds,
 --            end
 --        end),
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -57,14 +57,6 @@ globalkeys = awful.util.table.join(globalbinds,
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
-
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
-                  awful.util.eval, nil,
-                  awful.util.getdir("cache") .. "/history_eval")
-              end),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end)
 )
@@ -96,32 +88,34 @@ for i = 1, 9 do
         awful.key({ modkey }, "#" .. i + 9,
                   function ()
                         local screen = mouse.screen
-                        local tag = awful.tag.gettags(screen)[i]
+                        local tag = screen.tags[i]
                         if tag then
-                           awful.tag.viewonly(tag)
+                            tag:view_only()
                         end
                   end),
         awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
                       local screen = mouse.screen
-                      local tag = awful.tag.gettags(screen)[i]
+                      local tag = screen.tags[i]
                       if tag then
                          awful.tag.viewtoggle(tag)
                       end
                   end),
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
-                      local tag = awful.tag.gettags(client.focus.screen)[i]
-                      if client.focus and tag then
-                          awful.client.movetotag(tag)
-                     end
+                    local screen = mouse.screen
+                    local tag = screen.tags[i]
+                    if client.focus and tag then
+                    client.focus:move_to_tag(tag)
+                    end
                   end),
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
                   function ()
-                      local tag = awful.tag.gettags(client.focus.screen)[i]
-                      if client.focus and tag then
-                          awful.client.toggletag(tag)
-                      end
+                    local screen = mouse.screen
+                    local tag = screen.tags[i]
+                    if client.focus and tag then
+                        awful.client.toggletag(tag)
+                    end
                   end))
 end
 

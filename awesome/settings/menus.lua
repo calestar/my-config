@@ -11,8 +11,8 @@ myawesomemenu = {
 }
 
 programsmenu = {
-   {"Chrome","/usr/bin/google-chrome", "/opt/google/chrome/product_logo_32.png"},
-   {"Chromium","/usr/bin/chromium-browser"}
+   {"VSCode","/usr/bin/code", "/usr/share/code/resources/app/resources/linux/code.png"},
+   {"Chromium","/usr/bin/chromium"}
 }
 
 mymainmenu = awful.menu({ items = { { "programs", programsmenu },

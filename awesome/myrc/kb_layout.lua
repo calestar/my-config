@@ -15,7 +15,7 @@ kbdcfg = {}
         kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
         local t = kbdcfg.layout[kbdcfg.current]
         kbdcfg.widget:set_text(" " .. t[1] .. " ")
-        #os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
-        #naughty.notify({title = "Keyboard Layout", text = t[1], timeout = 2})        
+        -- os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
+        -- naughty.notify({title = "Keyboard Layout", text = t[1], timeout = 2})
 end
 
