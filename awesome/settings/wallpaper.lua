@@ -4,7 +4,7 @@ require("lfs")
 
 -- Helpers
 function file_exists(path)
-    return lfs.attributes(path,'mode') ~= nil and path
+  return lfs.attributes(path,'mode') ~= nil and path
 end
 
 -- Setup the wallpapers
