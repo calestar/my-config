@@ -161,7 +161,7 @@ make check-codestyle
 
 > Note: `check-codestyle` uses `isort`, `black` and `darglint` library
 
-Update all dev libraries to the latest version using one comand
+Update all dev libraries to the latest version using one command
 
 ```bash
 make update-dev-deps
@@ -297,18 +297,6 @@ GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dep
 
 This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/calestar/my-config/blob/master/LICENSE) for more details.
 
-## 📃 Citation
-
-```bibtex
-@misc{my-config,
-  author = {calestar},
-  title = {Awesome `my-config` is a Python cli/package created with https://github.com/TezRomacH/python-package-template},
-  year = {2022},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/calestar/my-config}}
-}
-```
 
 ## Credits [![🚀 Your next Python package needs a bleeding-edge project structure.](https://img.shields.io/badge/python--package--template-%F0%9F%9A%80-brightgreen)](https://github.com/TezRomacH/python-package-template)
 
