@@ -8,7 +8,6 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
-[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/calestar/my-config/blob/master/.pre-commit-config.yaml)
 [![Semantic Versions](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg)](https://github.com/calestar/my-config/releases)
 [![License](https://img.shields.io/github/license/calestar/my-config)](https://github.com/calestar/my-config/blob/master/LICENSE)
 ![Coverage Report](assets/images/coverage.svg)
@@ -33,11 +32,10 @@ cd my-config && git init
 make poetry-download
 ```
 
-3. Initialize poetry and install `pre-commit` hooks:
+3. Initialize poetry:
 
 ```bash
 make install
-make pre-commit-install
 ```
 
 4. Run the codestyle:
@@ -117,7 +115,6 @@ Articles:
 - Supports for `Python 3.9` and higher.
 - [`Poetry`](https://python-poetry.org/) as the dependencies manager. See configuration in [`pyproject.toml`](https://github.com/calestar/my-config/blob/master/pyproject.toml) and [`setup.cfg`](https://github.com/calestar/my-config/blob/master/setup.cfg).
 - Automatic codestyle with [`black`](https://github.com/psf/black), [`isort`](https://github.com/timothycrosley/isort) and [`pyupgrade`](https://github.com/asottile/pyupgrade).
-- Ready-to-use [`pre-commit`](https://pre-commit.com/) hooks with code-formatting.
 - Type checks with [`mypy`](https://mypy.readthedocs.io); docstring checks with [`darglint`](https://github.com/terrencepreilly/darglint); security checks with [`safety`](https://github.com/pyupio/safety) and [`bandit`](https://github.com/PyCQA/bandit)
 - Testing with [`pytest`](https://docs.pytest.org/en/latest/).
 - Ready-to-use [`.editorconfig`](https://github.com/calestar/my-config/blob/master/.editorconfig), and [`.gitignore`](https://github.com/calestar/my-config/blob/master/.gitignore). You don't have to worry about those things.
@@ -185,19 +182,13 @@ make poetry-remove
 </details>
 
 <details>
-<summary>2. Install all dependencies and pre-commit hooks</summary>
+<summary>2. Install all dependencies</summary>
 <p>
 
 Install requirements:
 
 ```bash
 make install
-```
-
-Pre-commit hooks coulb be installed after `git init` via
-
-```bash
-make pre-commit-install
 ```
 
 </p>
