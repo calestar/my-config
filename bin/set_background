@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo "Screen #$1"
-echo "Background path: $2"
-
-ln --symbolic --force $(realpath $2) ~/.config/awesome/.background_screen_$1

@@ -1,4 +1,0 @@
-#!/bin/bash
-pid=`pidof awesome`
-file=`ls -l /proc/$pid/fd/2 | sed "s/[^>]*> \(.*\)/\1/"`
-cat $file
