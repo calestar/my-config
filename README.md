@@ -57,7 +57,6 @@ git push -u origin main
 ### Set up bots
 
 - Set up [Dependabot](https://docs.github.com/en/github/administering-a-repository/enabling-and-disabling-version-updates#enabling-github-dependabot-version-updates) to ensure you have the latest dependencies.
-- Set up [Stale bot](https://github.com/apps/stale) for automatic issue closing.
 
 ### Poetry
 
@@ -131,7 +130,6 @@ Articles:
 
 - Ready-to-use [Pull Requests templates](https://github.com/calestar/my-config/blob/master/.github/PULL_REQUEST_TEMPLATE.md) and several [Issue templates](https://github.com/calestar/my-config/tree/master/.github/ISSUE_TEMPLATE).
 - Files such as: `LICENSE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically.
-- [`Stale bot`](https://github.com/apps/stale) that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan](https://github.com/marketplace/stale)). Configuration is [here](https://github.com/calestar/my-config/blob/master/.github/.stale.yml).
 - [Semantic Versions](https://semver.org/) specification with [`Release Drafter`](https://github.com/marketplace/actions/release-drafter).
 
 ## Installation
