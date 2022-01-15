@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "my-config"
 version = "0.0.1"
-description = "Awesome `my-config` is a Python cli/package created with https://github.com/TezRomacH/python-package-template"
+description = "Simple CLI used to manage local configuration and easier personal machine/VM bootstrap"
 readme = "README.md"
 authors = ["Jean-Sebastien Gelinas <calestar@gmail.com>"]
 license = "MIT"
@@ -14,10 +14,10 @@ repository = "https://github.com/calestar/my-config"
 homepage = "https://github.com/calestar/my-config"
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
-keywords = []  #! Update me
+keywords = []
 
 # Pypi classifiers: https://pypi.org/classifiers/
-classifiers = [  #! Update me
+classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",

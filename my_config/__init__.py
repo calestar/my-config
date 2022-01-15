@@ -1,12 +1,8 @@
 # type: ignore[attr-defined]
-"""Awesome `my-config` is a Python cli/package created with https://github.com/TezRomacH/python-package-template"""
+"""Simple CLI used to manage local configuration and easier personal machine/VM bootstrap"""
 
 import sys
-
-if sys.version_info >= (3, 8):
-    from importlib import metadata as importlib_metadata
-else:
-    import importlib_metadata
+from importlib import metadata as importlib_metadata
 
 
 def get_version() -> str:
