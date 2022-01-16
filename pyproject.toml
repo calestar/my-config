@@ -53,6 +53,7 @@ coverage = "^6.1.2"
 coverage-badge = "^1.1.0"
 pytest-html = "^3.1.1"
 pytest-cov = "^3.0.0"
+pytest-bdd = "^5.0.0"
 
 [tool.black]
 # https://github.com/psf/black
@@ -129,6 +130,8 @@ addopts = [
   "--doctest-modules",
   "--doctest-continue-on-failure",
 ]
+
+bdd_features_base_dir = "tests/"
 
 [tool.coverage.run]
 source = ["tests"]
