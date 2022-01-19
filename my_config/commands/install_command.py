@@ -1,7 +1,7 @@
 # type: ignore[attr-defined]
 import typer
 
-from my_config.commands.base import app, console
+from my_config.commands.command_base import app, console
 
 
 @app.command()

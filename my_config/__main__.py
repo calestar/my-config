@@ -1,7 +1,7 @@
 # type: ignore[attr-defined]
-from my_config.commands.base import app
-from my_config.commands.install import install
-from my_config.commands.version import version
+from my_config.commands.command_base import app
+from my_config.commands.install_command import install
+from my_config.commands.version_command import version
 
 if __name__ == "__main__":
     app()
