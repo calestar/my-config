@@ -49,7 +49,7 @@ mypy:
 check-safety:
 	poetry check
 	poetry run safety check --full-report
-	poetry run bandit -ll --recursive my_config tests
+	poetry run bandit -c pyproject.toml -ll --recursive my_config tests
 
 .PHONY: lint
 lint: test check-codestyle mypy check-safety

@@ -36,6 +36,7 @@ python = "^3.9"
 
 typer = {extras = ["all"], version = "^0.4.0"}
 rich = "^10.14.0"
+PyYAML = "^6.0"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.1"
@@ -54,6 +55,7 @@ coverage-badge = "^1.1.0"
 pytest-html = "^3.1.1"
 pytest-cov = "^3.0.0"
 pytest-bdd = "^5.0.0"
+pytest-mock = "^3.6.1"
 
 [tool.black]
 # https://github.com/psf/black
@@ -145,3 +147,6 @@ branch = true
 [coverage.report]
 fail_under = 50
 show_missing = true
+
+[tool.bandit.assert_used]
+skips = ['tests/*']

@@ -1,7 +1,6 @@
 # type: ignore[attr-defined]
 """Simple CLI used to manage local configuration and easier personal machine/VM bootstrap"""
 
-import sys
 from importlib import metadata as importlib_metadata
 
 

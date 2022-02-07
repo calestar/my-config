@@ -1,0 +1,5 @@
+config:
+  name: git
+  description: Installs and configure git and tooling around it
+  module: git_configuration.py
+  class: GitConfiguration
